@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "exec"
+
 module Cross
   module Go
     TEST_CMD = "go test"
@@ -22,5 +24,10 @@ module Cross
       "riscv64": "qemu-riscv64",
       "s390x": "qemu-s390x",
     }
+
+    def self.install_test_deps
+      cmd = "sudo apt-get install -y #{CROSS_TEST_DEPS.join(" ")}"
+      Exec::run cmd
+    end
   end
 end
