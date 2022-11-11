@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cross-rb (0.1.0)
+    cross-rb (0.0.1.pre)
 
 GEM
   remote: https://rubygems.org/
