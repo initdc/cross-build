@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
 module Cross
-  VERSION = "0.1.0"
+  module Rust
+    TEST_CMD = "cargo test"
+    
+    CROSS_TEST = false
+  end
 end
