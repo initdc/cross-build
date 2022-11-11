@@ -1,5 +1,26 @@
 # frozen_string_literal: true
 
 module Cross
-  VERSION = "0.1.0"
+  module Go
+    TEST_CMD = "go test"
+    
+    CROSS_TEST = true
+    CROSS_TEST_DEPS = [
+      "qemu-user",
+    ]
+    CROSS_TEST_RUNNER = {
+      "386": "",
+      "amd64": "",
+      "arm": "qemu-arm",
+      "arm64": "qemu-aarch64",
+      "mips": "qemu-mips",
+      "mips64": "qemu-mips64",
+      "mips64le": "qemu-mips64el",
+      "mipsle": "qemu-mipsel",
+      "ppc64": "qemu-ppc64",
+      "ppc64le": "qemu-ppc64le",
+      "riscv64": "qemu-riscv64",
+      "s390x": "qemu-s390x",
+    }
+  end
 end

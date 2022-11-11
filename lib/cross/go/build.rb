@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 module Cross
-  VERSION = "0.1.0"
+  module Go
+    BUILD_CMD = "go build"
+  end
 end
