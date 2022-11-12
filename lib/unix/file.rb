@@ -5,7 +5,11 @@ require "ignore"
 
 module Unix
   module File
-    def self.write(dir, file = "FILE")
+    module_function
+
+    extend Ignore
+
+    def write(dir, file = "FILE")
       Dir.chdir dir do
         IO.write(file, "")
 

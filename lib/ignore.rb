@@ -1,16 +1,22 @@
 # frozen_string_literal: true
 
 module Ignore
+  public
+
+  module_function
+
   @@ignore = [
     "BINARYS",
     "FILE",
     "SHA256SUM",
     "TREE",
   ]
-  def self.ignore
+
+  def ignore
     @@ignore
   end
-  def self.ignore=(val)
+
+  def ignore=(val)
     @@ignore = val
   end
 end

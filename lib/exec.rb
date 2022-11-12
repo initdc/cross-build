@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
+require "mod_comm"
+
 module Exec
-  @@debug = false
-  @@info = true
+  module_function
+  extend ModComm
 
-  def self.debug=(val)
-    @@debug = val
-  end
-
-  def self.info=(val)
-    @@info = val
-  end
-
-  def self.run(cmd)
-    puts cmd if @@info
+  def run(cmd)
+    puts cmd if Exec.info
 
     # https://docs.ruby-lang.org/en/master/IO.html#method-c-popen
     IO.popen(cmd) do |r|
@@ -22,11 +16,11 @@ module Exec
     return nil
   end
 
-  def self.code(cmd, *opt)
+  def code(cmd, *opt)
     catch_error = opt[0] || false
     code = opt[1] || 1
 
-    puts cmd if @@info
+    puts cmd if Exec.info
 
     # https://docs.ruby-lang.org/en/master/Kernel.html#method-i-system
     result = system cmd
@@ -36,8 +30,8 @@ module Exec
     return result
   end
 
-  def self.output(cmd)
-    puts cmd if @@info
+  def output(cmd)
+    puts cmd if Exec.info
 
     # https://docs.ruby-lang.org/en/master/Kernel.html#method-i-60
     output = `#{cmd}`

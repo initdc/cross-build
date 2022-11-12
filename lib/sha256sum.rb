@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 require "digest"
-require_relative "ignore"
+require "mod_comm"
+require "ignore"
 
 module SHA256SUM
-  @@info = true
+  module_function
 
-  def self.info=(val)
-    @@info = val
-  end
+  extend ModComm
+  extend Ignore
 
-  def self.write(dir, file = "SHA256SUM")
+  def write(dir, file = "SHA256SUM")
     d = Dir.new(dir)
     Dir.chdir dir do
       IO.write(file, "")
@@ -19,7 +19,7 @@ module SHA256SUM
         if not Ignore.ignore.include? child
           sha256sum = Digest::SHA256.file(child).hexdigest
           line = "#{sha256sum}  #{child}\n"
-          print line
+          print line if SHA256SUM.info
           IO.write(file, line, mode: "a")
         end
       end

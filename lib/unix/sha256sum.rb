@@ -5,7 +5,11 @@ require "ignore"
 
 module Unix
   module SHA256SUM
-    def self.write(dir, file = "SHA256SUM")
+    module_function
+
+    extend Ignore
+
+    def write(dir, file = "SHA256SUM")
       Dir.chdir dir do
         IO.write(file, "")
 
