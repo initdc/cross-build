@@ -5,8 +5,10 @@ module ModComm
 
   public
 
-  @debug = false
-  @info = true
+  def default
+    @debug = false
+    @info = true
+  end
 
   def debug
     @debug

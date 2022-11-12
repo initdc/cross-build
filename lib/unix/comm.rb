@@ -6,6 +6,5 @@ module Unix
   module_function
   extend ModComm
 
-  Unix.debug = false
-  Unix.info = true
+  Unix.default
 end
