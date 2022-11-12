@@ -10,6 +10,9 @@ module SHA256SUM
   extend ModComm
   extend Ignore
 
+  SHA256SUM.debug = false
+  SHA256SUM.info = true
+
   def write(dir, file = "SHA256SUM")
     d = Dir.new(dir)
     Dir.chdir dir do

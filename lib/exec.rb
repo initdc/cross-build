@@ -6,6 +6,9 @@ module Exec
   module_function
   extend ModComm
 
+  Exec.debug = false
+  Exec.info = true
+
   def run(cmd)
     puts cmd if Exec.info
 
