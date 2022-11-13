@@ -65,6 +65,10 @@ module Help
       end
 
       @cmds.each do |cmd|
+        P.len_sym cmd[:use], :@@cmd_short
+      end
+
+      @cmds.each do |cmd|
         short = P.sp_sym cmd[:use], :@@cmd_short
         puts "  #{short}#{cmd[:short]}"
       end

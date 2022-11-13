@@ -15,7 +15,7 @@ module Cross
 
   # Your code goes here...
   ch = Cross::Help.new("cross-rb", "[Golang Rust Zig C] just need build once time!")
-  ch.debug = true
+  ch.debug = false
 
   ch.add_cmd({
     :use => "help",
