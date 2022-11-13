@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "help"
+
 module Cross
-  VERSION = "0.1.0"
+  class Help < Help::HelpComm
+  end
 end
