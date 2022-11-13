@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "class_comm"
+require_relative "help/p"
 
 # https://cobra.dev/
 # The pattern to follow is
@@ -10,6 +11,8 @@ module Help
   class HelpComm < ClassComm
     attr_accessor :name, :desc
     attr_accessor :cmds, :subcmds, :args, :flags
+
+    include Help::P
 
     # https://cobra.dev/#example-1
     def initialize(name, desc)

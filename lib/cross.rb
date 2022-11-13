@@ -14,9 +14,25 @@ module Cross
   class Error < StandardError; end
 
   # Your code goes here...
-
   ch = Cross::Help.new("cross-rb", "[Golang Rust Zig C] just need build once time!")
+  ch.debug = true
+
   ch.add_cmd({
     :use => "help",
+    :short => "show help info",
   })
+
+  ch.add_cmd({
+    :use => "are_you_ok_I_am_more_than_@cmd_short",
+    :short => "show help info",
+  })
+
+  ch.add_cmd({
+    :use => "bom",
+    :short => "show help info",
+  })
+
+  ch.p_desc
+  ch.p_usage
+  ch.p_cmds
 end
