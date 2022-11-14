@@ -67,10 +67,11 @@ module Cross
 
   ch.add_subcmd(go)
 
+  ch.p_init
   ch.p_desc
   ch.p_usage
-  ch.p_cmds
   ch.p_subcmds
+  ch.p_cmds
   ch.p_flags
   ch.p_more
 

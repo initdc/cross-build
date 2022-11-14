@@ -36,6 +36,16 @@ module Help
       return str + " " * t
     end
 
+    def p_init
+      @subcmds.each do |subcmd|
+        P.len_sym subcmd.name, :@cmd_use
+      end
+
+      @cmds.each do |cmd|
+        P.len_sym cmd[:use], :@cmd_use
+      end
+    end
+
     def p_desc
       puts @desc
     end
@@ -47,9 +57,6 @@ module Help
     end
 
     def p_cmds
-      puts
-      puts "Available Commands:"
-
       if @debug
         puts :@cmd_use.class
         puts @cmd_use.class
@@ -65,19 +72,14 @@ module Help
       end
 
       @cmds.each do |cmd|
-        P.len_sym cmd[:use], :@cmd_use
-      end
-
-      @cmds.each do |cmd|
         use = P.sp_sym cmd[:use], :@cmd_use
         puts "  #{use}  #{cmd[:s_desc]}"
       end
     end
 
     def p_subcmds
-      @subcmds.each do |subcmd|
-        P.len_sym subcmd.name, :@cmd_use
-      end
+      puts
+      puts "Available Commands:"
 
       @subcmds.each do |subcmd|
         use = P.sp_sym subcmd.name, :@cmd_use
