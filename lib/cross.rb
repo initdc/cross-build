@@ -44,9 +44,39 @@ module Cross
     :desc => "force build",
   })
 
+  go = Cross::Help.new("go", "Golang just need build once time!")
+  go.add_cmds [{
+                :use => "help",
+                :s_desc => "show golang help info",
+              },
+               {
+                :use => "are_you_ok_I_am_more_than_@cmd_short",
+                :s_desc => "show help info",
+              }]
+
+  go.add_flags [{
+                 :s_use => "-f",
+                 :l_use => "--force",
+                 :desc => "force build golang",
+               },
+                {
+                 :s_use => "-ffffffffff",
+                 :l_use => "--forceeeeeeee",
+                 :desc => "force build",
+               }]
+
+  ch.add_subcmd(go)
+
   ch.p_desc
   ch.p_usage
   ch.p_cmds
+  ch.p_subcmds
   ch.p_flags
   ch.p_more
+
+  # go.p_desc
+  # go.p_usage
+  # go.p_cmds
+  # go.p_flags
+  # go.p_more
 end

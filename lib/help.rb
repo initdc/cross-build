@@ -43,14 +43,15 @@ module Help
       end
     end
 
-    def add_subcmd(obj)
-      if obj != nil
-        cmd = {}
-        cmd.store :use, obj[:use]
-        cmd.store :s_desc, obj[:s_desc]
-        cmd.store :l_desc, obj[:l_desc]
-        cmd.store :run, obj[:run]
-        @subcmds.push cmd
+    def add_cmds(objs)
+      objs.each do |obj|
+        self.add_cmd obj
+      end
+    end
+
+    def add_subcmd(subcmd)
+      if subcmd != nil
+        @subcmds.push subcmd
       end
     end
 
@@ -63,6 +64,12 @@ module Help
         flag.store :default, obj[:default]
         flag.store :run, obj[:run]
         @flags.push flag
+      end
+    end
+
+    def add_flags(objs)
+      objs.each do |obj|
+        self.add_flag obj
       end
     end
   end

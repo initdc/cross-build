@@ -74,6 +74,17 @@ module Help
       end
     end
 
+    def p_subcmds
+      @subcmds.each do |subcmd|
+        P.len_sym subcmd.name, :@cmd_use
+      end
+
+      @subcmds.each do |subcmd|
+        use = P.sp_sym subcmd.name, :@cmd_use
+        puts "  #{use}  #{subcmd.desc}"
+      end
+    end
+
     def p_flags
       puts
       puts "Flags:"
