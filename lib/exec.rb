@@ -3,10 +3,9 @@
 require "mod_comm"
 
 module Exec
-  module_function
   extend ModComm
 
-  Exec.default
+  module_function
 
   def run(cmd)
     puts cmd if Exec.info

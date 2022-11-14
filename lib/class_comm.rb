@@ -4,7 +4,7 @@ class ClassComm
   attr_accessor :debug, :info
 
   def initialize
-    self.debug = false
-    self.info = true
+    @debug = false
+    @info = true
   end
 end

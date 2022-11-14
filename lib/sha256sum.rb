@@ -5,12 +5,10 @@ require "mod_comm"
 require "ignore"
 
 module SHA256SUM
-  module_function
-
   extend ModComm
   extend Ignore
 
-  SHA256SUM.default
+  module_function
 
   def write(dir, file = "SHA256SUM")
     d = Dir.new(dir)

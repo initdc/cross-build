@@ -3,8 +3,5 @@
 require "mod_comm"
 
 module Unix
-  module_function
   extend ModComm
-
-  Unix.default
 end

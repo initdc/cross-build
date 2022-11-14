@@ -1,15 +1,15 @@
 module Help
   module P
-    @@cmd_short = 16
-    @@flag_short = 6
-    @@flag_long = 20
+    @cmd_short = 16
+    @flag_short = 6
+    @flag_long = 20
 
     def self.get_sym(sym)
-      return P::class_variable_get(sym)
+      return P::instance_variable_get(sym)
     end
 
     def self.set_sym(sym, val)
-      return P::class_variable_set(sym, val)
+      return P::instance_variable_set(sym, val)
     end
 
     def self.len(str, len)
@@ -51,25 +51,25 @@ module Help
       puts "Available Commands:"
 
       if @debug
-        puts :@@cmd_short.class
-        puts @@cmd_short.class
-        puts ":@@cmd_short".to_sym
-        puts "@@cmd_short".to_sym
-        puts ":@@cmd_short".to_sym == :@@cmd_short
-        puts "@@cmd_short".to_sym == :@@cmd_short
-        p Help::P::class_variables
-        p Help::P::class_variable_get :@@cmd_short
-        p Help::P::class_variable_get "@@cmd_short"
-        p P.get_sym :@@cmd_short
-        p P.get_sym "@@cmd_short"
+        puts :@cmd_short.class
+        puts @cmd_short.class
+        puts ":@cmd_short".to_sym
+        puts "@cmd_short".to_sym
+        puts ":@cmd_short".to_sym == :@cmd_short
+        puts "@cmd_short".to_sym == :@cmd_short
+        p Help::P::instance_variables
+        p Help::P::instance_variable_get :@cmd_short
+        p Help::P::instance_variable_get "@cmd_short"
+        p P.get_sym :@cmd_short
+        p P.get_sym "@cmd_short"
       end
 
       @cmds.each do |cmd|
-        P.len_sym cmd[:use], :@@cmd_short
+        P.len_sym cmd[:use], :@cmd_short
       end
 
       @cmds.each do |cmd|
-        short = P.sp_sym cmd[:use], :@@cmd_short
+        short = P.sp_sym cmd[:use], :@cmd_short
         puts "  #{short}#{cmd[:short]}"
       end
     end
