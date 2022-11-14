@@ -19,20 +19,34 @@ module Cross
 
   ch.add_cmd({
     :use => "help",
-    :short => "show help info",
+    :s_desc => "show help info",
   })
 
   ch.add_cmd({
     :use => "are_you_ok_I_am_more_than_@cmd_short",
-    :short => "show help info",
+    :s_desc => "show help info",
   })
 
   ch.add_cmd({
     :use => "bom",
-    :short => "show help info",
+    :s_desc => "show help info",
+  })
+
+  ch.add_flag({
+    :s_use => "-f",
+    :l_use => "--force",
+    :desc => "force build",
+  })
+
+  ch.add_flag({
+    :s_use => "-ffffffffff",
+    :l_use => "--forceeeeeeee",
+    :desc => "force build",
   })
 
   ch.p_desc
   ch.p_usage
   ch.p_cmds
+  ch.p_flags
+  ch.p_more
 end

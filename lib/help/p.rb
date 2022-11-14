@@ -1,8 +1,8 @@
 module Help
   module P
-    @cmd_short = 16
-    @flag_short = 6
-    @flag_long = 20
+    @cmd_use = 16
+    @flag_s_use = 4
+    @flag_l_use = 16
 
     def self.get_sym(sym)
       return P::instance_variable_get(sym)
@@ -13,15 +13,15 @@ module Help
     end
 
     def self.len(str, len)
-      if str.length > len - 2
-        len = str.length + 2
+      if str.length > len
+        len = str.length
       end
       return len - str.length
     end
 
     def self.len_sym(str, sym)
-      if str.length > P.get_sym(sym) - 2
-        P.set_sym(sym, str.length + 2)
+      if str.length > P.get_sym(sym)
+        P.set_sym(sym, str.length)
       end
       return P.get_sym(sym) - str.length
     end
@@ -51,27 +51,48 @@ module Help
       puts "Available Commands:"
 
       if @debug
-        puts :@cmd_short.class
-        puts @cmd_short.class
-        puts ":@cmd_short".to_sym
-        puts "@cmd_short".to_sym
-        puts ":@cmd_short".to_sym == :@cmd_short
-        puts "@cmd_short".to_sym == :@cmd_short
+        puts :@cmd_use.class
+        puts @cmd_use.class
+        puts ":@cmd_use".to_sym
+        puts "@cmd_use".to_sym
+        puts ":@cmd_use".to_sym == :@cmd_use
+        puts "@cmd_use".to_sym == :@cmd_use
         p Help::P::instance_variables
-        p Help::P::instance_variable_get :@cmd_short
-        p Help::P::instance_variable_get "@cmd_short"
-        p P.get_sym :@cmd_short
-        p P.get_sym "@cmd_short"
+        p Help::P::instance_variable_get :@cmd_use
+        p Help::P::instance_variable_get "@cmd_use"
+        p P.get_sym :@cmd_use
+        p P.get_sym "@cmd_use"
       end
 
       @cmds.each do |cmd|
-        P.len_sym cmd[:use], :@cmd_short
+        P.len_sym cmd[:use], :@cmd_use
       end
 
       @cmds.each do |cmd|
-        short = P.sp_sym cmd[:use], :@cmd_short
-        puts "  #{short}#{cmd[:short]}"
+        use = P.sp_sym cmd[:use], :@cmd_use
+        puts "  #{use}  #{cmd[:s_desc]}"
       end
+    end
+
+    def p_flags
+      puts
+      puts "Flags:"
+
+      @flags.each do |flag|
+        P.len_sym flag[:s_use], :@flag_s_use
+        P.len_sym flag[:l_use], :@flag_l_use
+      end
+
+      @flags.each do |flag|
+        short = P.sp_sym flag[:s_use], :@flag_s_use
+        long = P.sp_sym flag[:l_use], :@flag_l_use
+        puts "  #{short},#{long}  #{flag[:desc]}"
+      end
+    end
+
+    def p_more
+      puts
+      puts "Use \"#{@name} [command] --help\" for more information about a command."
     end
   end
 end

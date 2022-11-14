@@ -33,30 +33,37 @@ module Help
     end
 
     def add_cmd(obj)
-      cmd = {}
-      cmd.store :use, obj[:use]
-      cmd.store :short, obj[:short]
-      cmd.store :long, obj[:long]
-      cmd.store :run, obj[:run]
-      @cmds.push cmd
+      if obj != nil
+        cmd = {}
+        cmd.store :use, obj[:use]
+        cmd.store :s_desc, obj[:s_desc]
+        cmd.store :l_desc, obj[:l_desc]
+        cmd.store :run, obj[:run]
+        @cmds.push cmd
+      end
     end
 
     def add_subcmd(obj)
-      cmd = {}
-      cmd.store :use, obj[:use]
-      cmd.store :short, obj[:short]
-      cmd.store :long, obj[:long]
-      cmd.store :run, obj[:run]
-      @subcmds.push cmd
+      if obj != nil
+        cmd = {}
+        cmd.store :use, obj[:use]
+        cmd.store :s_desc, obj[:s_desc]
+        cmd.store :l_desc, obj[:l_desc]
+        cmd.store :run, obj[:run]
+        @subcmds.push cmd
+      end
     end
 
     def add_flag(obj)
-      flag = {}
-      flag.store :use, obj[:use]
-      flag.store :short, obj[:short]
-      flag.store :long, obj[:long]
-      flag.store :default, obj[:default]
-      @flags.push flag
+      if obj != nil
+        flag = {}
+        flag.store :s_use, obj[:s_use]
+        flag.store :l_use, obj[:l_use]
+        flag.store :desc, obj[:desc]
+        flag.store :default, obj[:default]
+        flag.store :run, obj[:run]
+        @flags.push flag
+      end
     end
   end
 end
