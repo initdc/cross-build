@@ -10,4 +10,4 @@ p Exec::code("unamea") == nil
 p Exec::code("exit 1") == false
 p Exec::output("uname") == "Linux"
 
-Exec::code("exit 2", true, 99)
+Exec::code("exit 2", 99)

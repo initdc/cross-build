@@ -5,6 +5,8 @@ require "mod_comm"
 module Exec
   extend ModComm
 
+  self::default
+
   module_function
 
   def run(cmd)
@@ -18,8 +20,8 @@ module Exec
   end
 
   def code(cmd, *opt)
-    catch_error = opt[0] || false
-    code = opt[1] || 1
+    catch_error = opt.nil? || false
+    code = opt[0] || 1
 
     puts cmd if Exec.info
 

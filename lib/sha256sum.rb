@@ -8,6 +8,8 @@ module SHA256SUM
   extend ModComm
   extend Ignore
 
+  self::default
+
   module_function
 
   def write(dir, file = "SHA256SUM")

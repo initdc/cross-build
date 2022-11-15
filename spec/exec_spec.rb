@@ -17,6 +17,10 @@ RSpec.describe Exec do
     expect(Exec::code "exit 1").to eq false
   end
 
+  it "system cmd got false" do
+    expect(Exec::code "exit 99", 99).to eq false
+  end
+
   it "output cmd got 'Linux'" do
     expect(Exec::output "uname").to eq "Linux"
   end

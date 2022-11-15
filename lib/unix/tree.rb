@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "comm"
+require "unix"
 
 module Unix
   module Tree

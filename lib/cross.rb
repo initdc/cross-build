@@ -2,13 +2,9 @@
 
 require_relative "cross/version"
 require_relative "cross/help"
-require_relative "cross/go/build"
-require_relative "cross/go/target"
-require_relative "cross/go/test"
 require_relative "sha256sum"
-require_relative "unix/sha256sum"
-require_relative "unix/tree"
-require_relative "unix/file"
+require_relative "unix"
+require_relative "exec"
 
 module Cross
   class Error < StandardError; end
