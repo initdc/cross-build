@@ -5,7 +5,7 @@ require "exec"
 module Cross
   module Go
     TEST_CMD = "go test"
-    
+
     CROSS_TEST = true
     CROSS_TEST_DEPS = [
       "qemu-user",
@@ -27,7 +27,7 @@ module Cross
 
     def self.install_test_deps
       cmd = "sudo apt-get install -y #{CROSS_TEST_DEPS.join(" ")}"
-      Exec::run cmd
+      Exec::code cmd, 1
     end
   end
 end

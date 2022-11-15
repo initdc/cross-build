@@ -2,6 +2,7 @@
 
 require_relative "cross/version"
 require_relative "cross/help"
+require_relative "cross/go/flow"
 require_relative "sha256sum"
 require_relative "unix"
 require_relative "exec"
@@ -76,4 +77,7 @@ module Cross
   # go.p_cmds
   # go.p_flags
   # go.p_more
+
+  gf = Cross::Go::Flow.new
+  gf.build
 end

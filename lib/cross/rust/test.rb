@@ -3,7 +3,7 @@
 module Cross
   module Rust
     TEST_CMD = "cargo test"
-    
+
     CROSS_TEST = false
   end
 end

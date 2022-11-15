@@ -92,7 +92,7 @@ module Cross
 
     def self.install_targets_deps
       cmd = "sudo apt-get install -y #{TARGET_DEPS.join(" ")}"
-      Exec.run cmd
+      Exec.code cmd, 1
     end
 
     def self.fmt_linker_env(target, linker)
