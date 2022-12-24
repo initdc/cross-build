@@ -10,4 +10,8 @@ p Exec::code("unamea") == nil
 p Exec::code("exit 1") == false
 p Exec::output("uname") == "Linux"
 
+Exec::each_line do |line|
+  puts line
+end
+
 Exec::code("exit 2", 99)

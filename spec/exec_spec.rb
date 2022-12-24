@@ -21,6 +21,17 @@ RSpec.describe Exec do
     expect(Exec::code "exit 99", 99).to eq false
   end
 
+  it "each_line cmd got array" do
+    arr = []
+    Exec::each_line "ls -1 bin" do |line|
+      res = line.delete_suffix("\n")
+      p res
+      arr.push res
+    end
+
+    expect(arr).to eq ["console", "setup"]
+  end
+
   it "output cmd got 'Linux'" do
     expect(Exec::output "uname").to eq "Linux"
   end

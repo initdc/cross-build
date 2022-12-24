@@ -19,6 +19,17 @@ module Exec
     return nil
   end
 
+  def each_line(cmd)
+    puts cmd if Exec.info
+
+    # https://docs.ruby-lang.org/en/master/IO.html#method-i-each_line
+    IO.popen(cmd) do |r|
+      r.each_line do |line|
+        yield line
+      end
+    end
+  end
+
   def code(cmd, *opt)
     catch_error = opt.nil? || false
     code = opt[0] || 1
