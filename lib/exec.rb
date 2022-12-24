@@ -30,6 +30,20 @@ module Exec
     end
   end
 
+  def by_ls_1(dir)
+    arr = []
+    Exec::each_line("ls -1 #{dir}") do |line|
+      arr.push line.delete_suffix("\n")
+    end
+    return arr
+  end
+
+  def each_ls_1(dir)
+    Exec::each_line("ls -1 #{dir}") do |line|
+      yield line
+    end
+  end
+
   def code(cmd, *opt)
     catch_error = opt.nil? || false
     code = opt[0] || 1
