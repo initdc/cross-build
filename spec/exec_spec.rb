@@ -9,26 +9,26 @@ RSpec.describe Exec do
     expect(Exec::run "sudo apt-get update").to be nil
   end
 
-  it "system cmd got true" do
+  it "code cmd got true" do
     expect(Exec::code "uname").to eq true
   end
 
-  it "system cmd got nil" do
+  it "code cmd got nil" do
     expect(Exec::code "unamea").to be nil
   end
 
-  it "system cmd got false" do
+  it "code cmd got false" do
     expect(Exec::code "exit 1").to eq false
   end
 
-  it "system cmd got false" do
+  it "code cmd got false" do
     expect(Exec::code "exit 99", 99).to eq false
   end
 
   it "each_line cmd got array" do
     arr = []
     Exec::each_line "ls -1 bin" do |line|
-      res = line.delete_suffix("\n")
+      res = line.chomp
       p res
       arr.push res
     end
@@ -43,7 +43,7 @@ RSpec.describe Exec do
   it "each_line cmd got array" do
     arr = []
     Exec::each_ls_1 "bin" do |line|
-      res = line.delete_suffix("\n").upcase
+      res = line.chomp.upcase
       p res
       arr.push res
     end

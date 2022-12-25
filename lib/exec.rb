@@ -35,7 +35,7 @@ module Exec
   def by_ls_1(dir)
     arr = []
     Exec::each_line("ls -1 #{dir}") do |line|
-      arr.push line.delete_suffix("\n")
+      arr.push line.chomp
     end
     return arr
   end
@@ -65,6 +65,6 @@ module Exec
 
     # https://docs.ruby-lang.org/en/master/Kernel.html#method-i-60
     output = `#{cmd}`
-    return output.delete_suffix("\n")
+    return output.chomp
   end
 end
