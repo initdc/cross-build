@@ -5,6 +5,10 @@ RSpec.describe Exec do
     expect(Exec::run "uname").to be nil
   end
 
+  it "run cmd print line by line" do
+    expect(Exec::run "sudo apt-get update").to be nil
+  end
+
   it "system cmd got true" do
     expect(Exec::code "uname").to eq true
   end

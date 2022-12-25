@@ -14,7 +14,9 @@ module Exec
 
     # https://docs.ruby-lang.org/en/master/IO.html#method-c-popen
     IO.popen(cmd) do |r|
-      puts r.readlines
+      while !r.eof?
+        print r.gets
+      end
     end
     return nil
   end
